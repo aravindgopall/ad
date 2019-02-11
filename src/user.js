@@ -38,7 +38,8 @@ module.exports = {
         email,
         title,
         phone,
-        location
+        location,
+        employeeId
       } = opts;
 
       let { passwordExpires, enabled } = opts;
@@ -61,8 +62,10 @@ module.exports = {
         email && String(email).indexOf('@') === -1
           ? 'Invalid email address.'
           : !commonName
-            ? 'A commonName is required.'
-            : !userName ? 'A userName is required.' : true;
+          ? 'A commonName is required.'
+          : !userName
+          ? 'A userName is required.'
+          : true;
 
       if (valid !== true) {
         /* istanbul ignore next */
@@ -80,8 +83,10 @@ module.exports = {
         userPrincipalName: `${userName}@${this.config.domain}`,
         sAMAccountName: userName,
         objectClass: this.config.defaults.userObjectClass,
-        userPassword: ssha.create(pass)
+        // userPassword: ssha.create(pass),
+        employeeId: employeeId
       };
+      console.log('userobject', userObject, location);
 
       this._addObject(`CN=${commonName}`, location, userObject)
         .then(res => {
@@ -117,7 +122,7 @@ module.exports = {
           }
           /* istanbul ignore next */
           return reject({
-            message: `Error creating user: ${err.message}`,
+            message: `Error creating user: ${JSON.stringify(err)}`,
             httpStatus: 503
           });
         });

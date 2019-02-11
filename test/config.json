@@ -1,5 +1,6 @@
 {
-	"url": "ldaps://127.0.0.1",
-	"user": "mock@acme.co",
-	"pass": "fizzlewuzzy",
+	"url": "ldaps://172.16.32.11",
+	"user": "aravind.mallapureddy@corp.juspay.net",
+	"pass": "Virat@009",
+    "domain": "corp.juspay.net"
 }
