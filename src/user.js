@@ -92,7 +92,8 @@ module.exports = {
         .then(res => {
           delete this._cache.users[userName];
           this._cache.all = {};
-          return this.setUserPassword(userName, pass);
+          // return this.setUserPassword(userName, pass);
+          return resolve(res);
         })
         .then(data => {
           let expirationMethod =

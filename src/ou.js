@@ -22,7 +22,10 @@ module.exports = {
           }
           let match = results.other.filter(obj => {
             return (
-              String(obj.dn).split(',')[0].toLowerCase().indexOf('ou=') > -1
+              String(obj.dn)
+                .split(',')[0]
+                .toLowerCase()
+                .indexOf('ou=') > -1
             );
           });
           resolve(api.processResults(opts, match));
@@ -41,7 +44,9 @@ module.exports = {
           }
           let match = results.other.filter(ou => {
             return (
-              String(ou.dn).split(',')[0].toLowerCase() === search.toLowerCase()
+              String(ou.dn)
+                .split(',')[0]
+                .toLowerCase() === search.toLowerCase()
             );
           });
           resolve(match[0]);

@@ -10,10 +10,10 @@ const addingUser = async () => {
       firstName: 'test',
       lastName: 'node',
       commonName: 'test node',
-      email: 'test.node@juspay.in',
-      pass: 'Juspay@123',
-      employeeId: '432'
-      // enabled: true
+      email: '',
+      pass: '',
+      employeeId: '432',
+      enabled: true
     })
     .then(res => {
       console.log(res);
